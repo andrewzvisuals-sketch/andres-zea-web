@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showreel — Andrés Zea</title>
+  <link rel="icon" href="assets/Asset_5.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="assets/Asset_1_2x.png" alt="Andrés Zea"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="video-editing.html">Video Editing</a>
+      <a href="motion.html">Motion Design</a>
+      <a href="production.html">Production</a>
+      <a href="about.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="showreel.html" class="nav-cta active-cta">▶ Watch Showreel</a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="video-editing.html" onclick="toggleMenu()">Video Editing</a>
+    <a href="motion.html" onclick="toggleMenu()">Motion Design</a>
+    <a href="production.html" onclick="toggleMenu()">Production</a>
+    <a href="about.html" onclick="toggleMenu()">About Me</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <div class="showreel-section">
+    <p class="hero-label" style="opacity:1;animation:none">Andrés Zea</p>
+    <h1>Showreel<span class="dot">.</span></h1>
+    <p class="tagline">Video editing that moves people.</p>
+
+    <!-- 
+      CÓMO AGREGAR TU VIDEO:
+      1. Sube tu video a YouTube (puede ser No Listado)
+      2. Copia el ID del video (la parte después de ?v= en la URL)
+      3. Reemplaza el div .video-placeholder por:
+         <iframe src="https://www.youtube.com/embed/TU_ID_AQUI?rel=0&color=white&modestbranding=1" 
+                 title="Showreel Andrés Zea" allowfullscreen></iframe>
+      
+      O si usas Cloudflare Stream:
+         <iframe src="https://iframe.cloudflarestream.com/TU_ID_AQUI" 
+                 title="Showreel Andrés Zea" allowfullscreen></iframe>
+    -->
+    <div class="video-embed" style="max-width:900px">
+      <div class="video-placeholder">
+        <div class="big-play"><div class="big-play-tri"></div></div>
+        <p>Showreel próximamente</p>
+      </div>
+    </div>
+
+    <div style="margin-top:64px;padding-top:48px;border-top:0.5px solid var(--border)">
+      <div class="section-title" style="margin-bottom:32px"><div class="diamond"></div>Proyectos destacados en el showreel</div>
+      <div class="work-grid" style="max-width:900px">
+        <div class="work-card">
+          <div class="work-thumb thumb-1"><div class="thumb-placeholder thumb-1"><span class="thumb-icon">01</span></div><div class="play-circle"><div class="play-tri"></div></div></div>
+          <div class="work-info"><div class="work-cat">Video Editing</div><div class="work-title">Próximamente</div><div class="work-tags">Tu proyecto aquí</div></div>
+        </div>
+        <div class="work-card">
+          <div class="work-thumb thumb-2"><div class="thumb-placeholder thumb-2"><span class="thumb-icon">02</span></div><div class="play-circle"><div class="play-tri"></div></div></div>
+          <div class="work-info"><div class="work-cat">Motion Design</div><div class="work-title">Próximamente</div><div class="work-tags">Tu proyecto aquí</div></div>
+        </div>
+        <div class="work-card">
+          <div class="work-thumb thumb-3"><div class="thumb-placeholder thumb-3"><span class="thumb-icon">03</span></div><div class="play-circle"><div class="play-tri"></div></div></div>
+          <div class="work-info"><div class="work-cat">Production</div><div class="work-title">Próximamente</div><div class="work-tags">Tu proyecto aquí</div></div>
+        </div>
+        <div class="work-card">
+          <div class="work-thumb thumb-4"><div class="thumb-placeholder thumb-4"><span class="thumb-icon">04</span></div><div class="play-circle"><div class="play-tri"></div></div></div>
+          <div class="work-info"><div class="work-cat">Production</div><div class="work-title">Próximamente</div><div class="work-tags">Tu proyecto aquí</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="assets/Asset_5.png" alt="az"><div><div class="footer-name">andrés zea</div><div class="footer-role">video editor</div></div></div>
+    <p class="footer-copy">&copy; 2025 Andrés Zea. All rights reserved.</p>
+    <div class="footer-right">Designed &amp; built with passion. <div class="diamond diamond-sm"></div></div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

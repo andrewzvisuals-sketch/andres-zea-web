@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Editing — Andrés Zea</title>
+  <link rel="icon" href="assets/Asset_5.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="assets/Asset_1_2x.png" alt="Andrés Zea"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="video-editing.html">Video Editing</a>
+      <a href="motion.html">Motion Design</a>
+      <a href="production.html">Production</a>
+      <a href="about.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="showreel.html" class="nav-cta">▶ Watch Showreel</a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="video-editing.html" onclick="toggleMenu()">Video Editing</a>
+    <a href="motion.html" onclick="toggleMenu()">Motion Design</a>
+    <a href="production.html" onclick="toggleMenu()">Production</a>
+    <a href="about.html" onclick="toggleMenu()">About Me</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <div class="page-header">
+    <div class="page-header-label">Video Editor · Andrés Zea</div>
+    <h1>Video Editing<span class="dot">.</span></h1>
+    <p>Cinematic storytelling, long-form content and branded videos edited with precision and intention.</p>
+  </div>
+
+  <!--
+    CÓMO AGREGAR UN PROYECTO:
+    Copia uno de los bloques .project-card de abajo,
+    cambia los textos y agrega la imagen o video.
+    Para video: reemplaza .project-thumb-placeholder por un <iframe>
+  -->
+  <div class="projects-grid">
+
+    <!-- PROYECTO EJEMPLO — duplícalo para agregar más -->
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <div class="project-thumb-placeholder">01</div>
+        <!-- Para agregar imagen: <img src="assets/tu-imagen.jpg" alt="Nombre proyecto"> -->
+        <!-- Para agregar video embed: <iframe src="https://www.youtube.com/embed/ID" allowfullscreen></iframe> -->
+        <div class="project-play"><div class="play-tri"></div></div>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">Video Editing</div>
+        <div class="project-title">Proyecto próximamente</div>
+        <div class="project-desc">Descripción del proyecto. Agrega aquí los detalles del trabajo realizado.</div>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:.08s">
+      <div class="project-thumb">
+        <div class="project-thumb-placeholder">02</div>
+        <div class="project-play"><div class="play-tri"></div></div>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">Video Editing</div>
+        <div class="project-title">Proyecto próximamente</div>
+        <div class="project-desc">Descripción del proyecto. Agrega aquí los detalles del trabajo realizado.</div>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:.16s">
+      <div class="project-thumb">
+        <div class="project-thumb-placeholder">03</div>
+        <div class="project-play"><div class="play-tri"></div></div>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">Video Editing</div>
+        <div class="project-title">Proyecto próximamente</div>
+        <div class="project-desc">Descripción del proyecto. Agrega aquí los detalles del trabajo realizado.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="empty-state" style="padding-top:0">
+    <p style="font-size:12px;color:var(--text-dim);letter-spacing:.1em">Más proyectos próximamente &nbsp;·&nbsp; <a href="contact.html" style="color:var(--gold-aged);text-decoration:none">Trabajemos juntos →</a></p>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="assets/Asset_5.png" alt="az"><div><div class="footer-name">andrés zea</div><div class="footer-role">video editor</div></div></div>
+    <p class="footer-copy">&copy; 2025 Andrés Zea. All rights reserved.</p>
+    <div class="footer-right">Designed &amp; built with passion. <div class="diamond diamond-sm"></div></div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me — Andrés Zea</title>
+  <link rel="icon" href="assets/Asset_5.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="assets/Asset_1_2x.png" alt="Andrés Zea"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="video-editing.html">Video Editing</a>
+      <a href="motion.html">Motion Design</a>
+      <a href="production.html">Production</a>
+      <a href="about.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="showreel.html" class="nav-cta">▶ Watch Showreel</a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="video-editing.html" onclick="toggleMenu()">Video Editing</a>
+    <a href="motion.html" onclick="toggleMenu()">Motion Design</a>
+    <a href="production.html" onclick="toggleMenu()">Production</a>
+    <a href="about.html" onclick="toggleMenu()">About Me</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <div class="page-header">
+    <div class="page-header-label">About · Andrés Zea</div>
+    <h1>About Me<span class="dot">.</span></h1>
+    <p>Video editor and motion graphics designer based in Colombia, available for remote work worldwide.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:0.5px solid var(--border)">
+
+    <div class="content-section reveal" style="border-right:0.5px solid var(--border);padding-right:64px">
+      <h2><div class="diamond diamond-sm"></div>Who I am</h2>
+      <!--  EDITA AQUÍ TU BIO  -->
+      <p>I'm Andrés Zea, a video editor and motion graphics designer based in Colombia. With 5+ years of experience, I specialize in creating engaging content for YouTube creators, brands and businesses.</p>
+      <p>My work sits at the intersection of storytelling and technical precision — I believe every cut, every transition and every sound choice contributes to the emotional impact of a piece.</p>
+      <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--cream-dark);font-size:16px;border-left:1.5px solid var(--gold-burnt);padding-left:18px;line-height:1.6">"Video editing that moves people."</p>
+    </div>
+
+    <div class="content-section reveal" style="transition-delay:.1s">
+      <h2><div class="diamond diamond-sm"></div>What I do</h2>
+      <ul>
+        <li>Video editing for YouTube creators &amp; brands</li>
+        <li>Motion graphics &amp; 2D animation</li>
+        <li>Color grading &amp; color correction</li>
+        <li>Sound design &amp; audio mixing</li>
+        <li>Commercial video production</li>
+        <li>After Effects compositing</li>
+        <li>Graphic design for video (Illustrator, Photoshop)</li>
+      </ul>
+
+      <h2 style="margin-top:8px"><div class="diamond diamond-sm"></div>Tools</h2>
+      <ul>
+        <li>Adobe Premiere Pro</li>
+        <li>Adobe After Effects</li>
+        <li>Adobe Photoshop</li>
+        <li>Adobe Illustrator</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="padding:64px 48px;display:flex;gap:16px;flex-wrap:wrap" class="reveal">
+    <a href="showreel.html" class="btn-primary"><span class="play-icon"></span>Watch Showreel</a>
+    <a href="contact.html" class="btn-ghost">Get in Touch</a>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="assets/Asset_5.png" alt="az"><div><div class="footer-name">andrés zea</div><div class="footer-role">video editor</div></div></div>
+    <p class="footer-copy">&copy; 2025 Andrés Zea. All rights reserved.</p>
+    <div class="footer-right">Designed &amp; built with passion. <div class="diamond diamond-sm"></div></div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

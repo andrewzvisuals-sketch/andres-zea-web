@@ -4,599 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Andrés Zea — Video Editor & Motion Graphics Designer</title>
+  <link rel="icon" href="assets/Asset_5.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --amber: #F5A623;
-      --amber-dark: #d4891a;
-      --bg: #080706;
-      --bg-card: #0f0e0c;
-      --bg-section: #0c0b09;
-      --border: #1e1c18;
-      --text: #ffffff;
-      --muted: #888070;
-      --muted-light: #aaa090;
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 68px;
-      background: rgba(8,7,6,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color .3s;
-    }
-    nav.scrolled { border-bottom-color: var(--border); }
-
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { height: 36px; }
-    .nav-logo-text { display: flex; flex-direction: column; }
-    .nav-logo-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.1; }
-    .nav-logo-role { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-
-    .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a {
-      font-size: 13px;
-      color: var(--muted-light);
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 2px;
-      transition: color .2s;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      width: 0; height: 2px;
-      background: var(--amber);
-      transition: width .25s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
-    .nav-cta {
-      background: transparent;
-      border: 1px solid var(--amber);
-      color: var(--amber);
-      padding: 9px 20px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      transition: background .2s, color .2s, transform .15s;
-    }
-    .nav-cta:hover { background: var(--amber); color: #000; transform: scale(1.02); }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 100px 48px 60px;
-    }
-
-    .hero-glow {
-      position: absolute;
-      right: -5%;
-      top: -10%;
-      width: 65%;
-      height: 120%;
-      background: radial-gradient(ellipse at 60% 40%, rgba(60,40,5,0.55) 0%, rgba(25,15,0,0.4) 35%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-glow-2 {
-      position: absolute;
-      left: 0; top: 0;
-      width: 50%;
-      height: 100%;
-      background: radial-gradient(ellipse at 0% 60%, rgba(245,166,35,0.04) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-content { position: relative; z-index: 2; width: 52%; }
-    .hero-image { position: absolute; right: 0; bottom: 0; z-index: 1; width: 52%; height: 110%; }
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.5) 60%, transparent 85%),
-                          linear-gradient(to top, transparent 0%, black 12%);
-      -webkit-mask-composite: destination-in;
-      mask-image: linear-gradient(to left, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.5) 60%, transparent 85%),
-                  linear-gradient(to top, transparent 0%, black 12%);
-      mask-composite: intersect;
-    }
-
-    .hero-label {
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--amber);
-      font-weight: 500;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp .7s .1s forwards;
-    }
-
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(42px, 5vw, 68px);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -.02em;
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp .7s .25s forwards;
-    }
-    .hero h1 .dot { color: var(--amber); }
-
-    .hero-desc {
-      border-left: 2px solid var(--amber);
-      padding-left: 18px;
-      margin-bottom: 36px;
-      opacity: 0;
-      animation: fadeUp .7s .4s forwards;
-    }
-    .hero-desc p { font-size: 15px; color: var(--muted-light); line-height: 1.7; max-width: 380px; }
-
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      opacity: 0;
-      animation: fadeUp .7s .55s forwards;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--amber);
-      color: #000;
-      border: none;
-      padding: 13px 26px;
-      border-radius: 7px;
-      font-size: 14px;
-      font-weight: 600;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-    }
-    .btn-primary:hover { background: var(--amber-dark); transform: scale(1.02); }
-    .btn-primary .play-icon {
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 5px 0 5px 9px;
-      border-color: transparent transparent transparent #000;
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--text);
-      border: 1px solid #333;
-      padding: 13px 26px;
-      border-radius: 7px;
-      font-size: 14px;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      transition: border-color .2s, transform .15s;
-    }
-    .btn-secondary:hover { border-color: #666; transform: scale(1.02); }
-
-    /* ── TRUSTED ── */
-    .trusted {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 48px;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      background: var(--bg-section);
-    }
-    .trusted-label {
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .trusted-logos {
-      display: flex;
-      gap: 36px;
-      align-items: center;
-    }
-    .trusted-logos span {
-      font-size: 13px;
-      color: #444;
-      font-weight: 600;
-      letter-spacing: .04em;
-      transition: color .2s;
-      cursor: default;
-    }
-    .trusted-logos span:hover { color: #777; }
-
-    /* ── SECTION COMMONS ── */
-    section { padding: 80px 48px; }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Syne', sans-serif;
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .diamond {
-      width: 10px; height: 10px;
-      background: var(--amber);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
-    .diamond-sm { width: 7px; height: 7px; }
-    .view-all {
-      font-size: 13px;
-      color: var(--muted-light);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color .2s;
-    }
-    .view-all:hover { color: var(--amber); }
-
-    /* ── FEATURED WORK ── */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .work-card {
-      background: var(--bg-card);
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: transform .25s, border-color .25s;
-    }
-    .work-card:hover { transform: translateY(-5px); border-color: #3a3020; }
-
-    .work-thumb {
-      aspect-ratio: 16/9;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .work-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .work-card:hover .work-thumb img { transform: scale(1.06); }
-
-    .thumb-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .thumb-1 { background: linear-gradient(135deg, #1c1400 0%, #2e2000 50%, #1a1200 100%); }
-    .thumb-2 { background: linear-gradient(135deg, #1a0800 0%, #2e1000 50%, #180600 100%); }
-    .thumb-3 { background: linear-gradient(135deg, #06080f 0%, #0a1020 50%, #060810 100%); }
-    .thumb-4 { background: linear-gradient(135deg, #0a0a12 0%, #141428 50%, #080810 100%); }
-
-    .thumb-icon {
-      font-size: 40px;
-      opacity: .08;
-      color: var(--amber);
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-    }
-
-    .play-circle {
-      position: absolute;
-      bottom: 10px; right: 10px;
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.85);
-      display: flex; align-items: center; justify-content: center;
-      transition: transform .2s, background .2s;
-    }
-    .work-card:hover .play-circle { transform: scale(1.1); background: #fff; }
-    .play-tri {
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 5px 0 5px 9px;
-      border-color: transparent transparent transparent #000;
-      margin-left: 2px;
-    }
-
-    .work-info { padding: 14px 16px; }
-    .work-cat {
-      font-size: 9px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--amber);
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-    .work-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 5px;
-    }
-    .work-tags { font-size: 11px; color: var(--muted); }
-
-    /* ── TOOLS ── */
-    .tools-section {
-      background: var(--bg-section);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .tools-inner {
-      display: flex;
-      align-items: center;
-      gap: 80px;
-    }
-    .tools-left { flex: 1; }
-    .tools-icons {
-      display: flex;
-      gap: 24px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-    }
-    .tool-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .tool-icon {
-      width: 52px; height: 52px;
-      border-radius: 10px;
-      background: #0f0e0c;
-      border: 1px solid var(--amber);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--amber);
-      transition: background .2s, transform .15s;
-    }
-    .tool-icon:hover { background: rgba(245,166,35,.08); transform: translateY(-2px); }
-    .tool-name { font-size: 11px; color: var(--muted); text-align: center; max-width: 60px; }
-
-    .tools-right { width: 300px; flex-shrink: 0; }
-    .tools-quote {
-      font-family: 'Syne', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.35;
-      margin-bottom: 12px;
-    }
-    .tools-accent { width: 40px; height: 3px; background: var(--amber); margin-bottom: 14px; border-radius: 2px; }
-    .tools-sub { font-size: 13px; color: var(--muted); line-height: 1.7; }
-
-    /* ── ABOUT ── */
-    .about-section {
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .about-col {
-      padding: 56px 48px;
-      border-right: 1px solid var(--border);
-    }
-    .about-col:last-child { border-right: none; }
-    .about-col-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Syne', sans-serif;
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 18px;
-    }
-    .about-text { font-size: 13px; color: var(--muted-light); line-height: 1.75; margin-bottom: 20px; }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid #333;
-      color: var(--text);
-      padding: 9px 20px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      transition: border-color .2s, transform .15s;
-    }
-    .btn-ghost:hover { border-color: #666; transform: scale(1.02); }
-
-    .map-svg { width: 100%; height: 90px; margin: 10px 0 14px; }
-    .flag-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
-
-    .linkedin-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      color: var(--text);
-      padding: 11px 18px;
-      border-radius: 7px;
-      font-size: 13px;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      margin-bottom: 14px;
-      transition: background .2s, transform .15s;
-    }
-    .linkedin-btn:hover { background: #222; transform: scale(1.01); }
-    .linkedin-icon { color: #0A66C2; font-size: 16px; font-weight: 700; }
-
-    .social-row { display: flex; gap: 10px; }
-    .social-btn {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 1px solid #2a2a2a;
-      background: transparent;
-      color: var(--muted-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      cursor: pointer;
-      transition: border-color .2s, color .2s, transform .15s;
-    }
-    .social-btn:hover { border-color: var(--amber); color: var(--amber); transform: scale(1.08); }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 24px 48px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg);
-    }
-    .footer-logo { display: flex; align-items: center; gap: 10px; }
-    .footer-logo img { height: 28px; }
-    .footer-copy { font-size: 12px; color: var(--muted); }
-    .footer-right { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
-
-    /* ── FADE IN ON SCROLL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── MOBILE NAV ── */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 68px; left: 0; right: 0;
-      background: rgba(8,7,6,.97);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 24px;
-      z-index: 99;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 15px;
-      color: var(--muted-light);
-      text-decoration: none;
-      padding: 4px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .work-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-image { width: 48%; }
-      .hero-content { width: 56%; }
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
-      .hamburger { display: flex; }
-
-      .hero { flex-direction: column; padding: 100px 24px 60px; align-items: flex-start; min-height: auto; }
-      .hero-content { width: 100%; }
-      .hero-image { position: relative; width: 100%; height: 260px; margin-top: 32px; }
-      .hero-image img { -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%); mask-image: linear-gradient(to top, transparent 0%, black 25%); object-position: center 20%; }
-      .hero h1 { font-size: 36px; }
-
-      .trusted { padding: 16px 24px; gap: 20px; flex-wrap: wrap; }
-      .trusted-logos { gap: 18px; flex-wrap: wrap; }
-
-      section { padding: 56px 24px; }
-      .work-grid { grid-template-columns: 1fr; }
-      .tools-inner { flex-direction: column; gap: 36px; }
-      .tools-right { width: 100%; }
-      .about-section { grid-template-columns: 1fr; }
-      .about-col { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 24px; }
-      .about-col:last-child { border-bottom: none; }
-      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">
-      <img src="assets/Asset_5.png" alt="az logo">
-      <div class="nav-logo-text">
-        <span class="nav-logo-name">andrés zea</span>
-        <span class="nav-logo-role">video editor</span>
-      </div>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/Asset_1_2x.png" alt="Andrés Zea">
     </a>
-    <div class="nav-links">
-      <a href="#work" class="active">Video Editing</a>
-      <a href="#work">Motion</a>
-      <a href="#work">Production</a>
-      <a href="#about">About Me</a>
-      <a href="#about">Contact Me</a>
+    <div class="nav-links" id="navLinks">
+      <a href="video-editing.html">Video Editing</a>
+      <a href="motion.html">Motion Design</a>
+      <a href="production.html">Production</a>
+      <a href="about.html">About Me</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <button class="nav-cta" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">Let's Work Together</button>
+    <a href="showreel.html" class="nav-cta">▶ Watch Showreel</a>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#work" onclick="toggleMenu()">Video Editing</a>
-    <a href="#work" onclick="toggleMenu()">Motion</a>
-    <a href="#work" onclick="toggleMenu()">Production</a>
-    <a href="#about" onclick="toggleMenu()">About Me</a>
-    <a href="#about" onclick="toggleMenu()">Contact Me</a>
-    <button class="nav-cta" style="width:100%;margin-top:8px">Let's Work Together</button>
+    <a href="video-editing.html" onclick="toggleMenu()">Video Editing</a>
+    <a href="motion.html" onclick="toggleMenu()">Motion Design</a>
+    <a href="production.html" onclick="toggleMenu()">Production</a>
+    <a href="about.html" onclick="toggleMenu()">About Me</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="showreel.html" class="nav-cta" style="text-align:center;margin-top:8px">▶ Watch Showreel</a>
   </div>
 
   <!-- HERO -->
@@ -610,8 +49,7 @@
         <p>I help creators, brands and companies tell their stories through professional video editing and engaging motion design.</p>
       </div>
       <div class="hero-btns">
-        <button class="btn-primary"><span class="play-icon"></span>Watch Showreel</button>
-        <button class="btn-secondary">View My Work</button>
+        <a href="showreel.html" class="btn-primary"><span class="play-icon"></span>Watch Showreel</a>
       </div>
     </div>
     <div class="hero-image">
@@ -619,30 +57,19 @@
     </div>
   </section>
 
-  <!-- TRUSTED BY -->
-  <div class="trusted">
-    <span class="trusted-label">Trusted by</span>
-    <div class="trusted-logos">
-      <span>▶&nbsp;YouTube</span>
-      <span>⬡ Adobe</span>
-      <span>Canon</span>
-      <span>DJI</span>
-      <span>Sennheiser</span>
-    </div>
-  </div>
+  <!-- SEPARATOR -->
+  <div class="separator-strip"></div>
 
   <!-- FEATURED WORK -->
   <section id="work">
     <div class="section-header reveal">
       <div class="section-title"><div class="diamond"></div>Featured Work</div>
-      <a href="#" class="view-all">View All Projects &nbsp;→</a>
+      <a href="video-editing.html" class="view-all">View All Projects &nbsp;→</a>
     </div>
     <div class="work-grid">
-      <div class="work-card reveal">
+      <a href="video-editing.html" class="work-card reveal">
         <div class="work-thumb thumb-1">
-          <div class="thumb-placeholder thumb-1">
-            <span class="thumb-icon">CS</span>
-          </div>
+          <div class="thumb-placeholder thumb-1"><span class="thumb-icon">CS</span></div>
           <div class="play-circle"><div class="play-tri"></div></div>
         </div>
         <div class="work-info">
@@ -650,25 +77,21 @@
           <div class="work-title">Cinematic Storytelling</div>
           <div class="work-tags">Color &bull; Sound Design &bull; Editing</div>
         </div>
-      </div>
-      <div class="work-card reveal" style="transition-delay:.08s">
+      </a>
+      <a href="motion.html" class="work-card reveal" style="transition-delay:.08s">
         <div class="work-thumb thumb-2">
-          <div class="thumb-placeholder thumb-2">
-            <span class="thumb-icon">PA</span>
-          </div>
+          <div class="thumb-placeholder thumb-2"><span class="thumb-icon">PA</span></div>
           <div class="play-circle"><div class="play-tri"></div></div>
         </div>
         <div class="work-info">
-          <div class="work-cat">Motion Graphics</div>
+          <div class="work-cat">Motion Design</div>
           <div class="work-title">Product Animation</div>
           <div class="work-tags">3D &bull; Animation &bull; Compositing</div>
         </div>
-      </div>
-      <div class="work-card reveal" style="transition-delay:.16s">
+      </a>
+      <a href="video-editing.html" class="work-card reveal" style="transition-delay:.16s">
         <div class="work-thumb thumb-3">
-          <div class="thumb-placeholder thumb-3">
-            <span class="thumb-icon">YT</span>
-          </div>
+          <div class="thumb-placeholder thumb-3"><span class="thumb-icon">YT</span></div>
           <div class="play-circle"><div class="play-tri"></div></div>
         </div>
         <div class="work-info">
@@ -676,12 +99,10 @@
           <div class="work-title">YouTube Content</div>
           <div class="work-tags">Long Form &bull; Retention &bull; Storytelling</div>
         </div>
-      </div>
-      <div class="work-card reveal" style="transition-delay:.24s">
+      </a>
+      <a href="production.html" class="work-card reveal" style="transition-delay:.24s">
         <div class="work-thumb thumb-4">
-          <div class="thumb-placeholder thumb-4">
-            <span class="thumb-icon">CV</span>
-          </div>
+          <div class="thumb-placeholder thumb-4"><span class="thumb-icon">CV</span></div>
           <div class="play-circle"><div class="play-tri"></div></div>
         </div>
         <div class="work-info">
@@ -689,7 +110,7 @@
           <div class="work-title">Commercial Videos</div>
           <div class="work-tags">Ads &bull; VFX &bull; Post Production</div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -701,9 +122,8 @@
         <div class="tools-icons">
           <div class="tool-item"><div class="tool-icon">Pr</div><div class="tool-name">Premiere Pro</div></div>
           <div class="tool-item"><div class="tool-icon">Ae</div><div class="tool-name">After Effects</div></div>
-          <div class="tool-item"><div class="tool-icon" style="font-size:12px">Da</div><div class="tool-name">DaVinci Resolve</div></div>
-          <div class="tool-item"><div class="tool-icon" style="font-size:11px">C4D</div><div class="tool-name">Cinema 4D</div></div>
           <div class="tool-item"><div class="tool-icon">Ps</div><div class="tool-name">Photoshop</div></div>
+          <div class="tool-item"><div class="tool-icon" style="font-size:11px">Ai</div><div class="tool-name">Illustrator</div></div>
         </div>
       </div>
       <div class="tools-right reveal">
@@ -719,35 +139,57 @@
     <div class="about-col reveal">
       <div class="about-col-title"><div class="diamond diamond-sm"></div>About Me</div>
       <p class="about-text">I'm Andrés Zea, a video editor and motion graphics designer based in Colombia. With 5+ years of experience, I specialize in creating engaging content for YouTube creators, brands and businesses.</p>
-      <button class="btn-ghost">More About Me</button>
+      <a href="about.html" class="btn-ghost">More About Me</a>
     </div>
     <div class="about-col reveal" style="transition-delay:.1s">
       <div class="about-col-title"><div class="diamond diamond-sm"></div>Based in Colombia</div>
-      <svg class="map-svg" viewBox="0 0 200 120" fill="none">
-        <g fill="#252318" opacity="0.9">
-          <circle cx="82" cy="18" r="1.4"/><circle cx="91" cy="15" r="1.4"/><circle cx="101" cy="14" r="1.4"/>
-          <circle cx="111" cy="16" r="1.4"/><circle cx="119" cy="21" r="1.4"/><circle cx="123" cy="30" r="1.4"/>
-          <circle cx="121" cy="40" r="1.4"/><circle cx="117" cy="50" r="1.4"/><circle cx="119" cy="60" r="1.4"/>
-          <circle cx="113" cy="70" r="1.4"/><circle cx="106" cy="79" r="1.4"/><circle cx="100" cy="89" r="1.4"/>
-          <circle cx="95" cy="99" r="1.4"/><circle cx="90" cy="109" r="1.4"/>
-          <circle cx="85" cy="115" r="1.4"/><circle cx="77" cy="112" r="1.4"/>
-          <circle cx="68" cy="104" r="1.4"/><circle cx="62" cy="94" r="1.4"/>
-          <circle cx="58" cy="82" r="1.4"/><circle cx="55" cy="70" r="1.4"/>
-          <circle cx="52" cy="58" r="1.4"/><circle cx="55" cy="47" r="1.4"/>
-          <circle cx="59" cy="37" r="1.4"/><circle cx="65" cy="28" r="1.4"/>
-          <circle cx="73" cy="21" r="1.4"/>
-          <circle cx="70" cy="48" r="1.1"/><circle cx="76" cy="52" r="1.1"/><circle cx="82" cy="50" r="1.1"/>
-          <circle cx="88" cy="53" r="1.1"/><circle cx="94" cy="56" r="1.1"/><circle cx="99" cy="60" r="1.1"/>
-          <circle cx="72" cy="60" r="1.1"/><circle cx="78" cy="63" r="1.1"/><circle cx="84" cy="62" r="1.1"/>
-          <circle cx="90" cy="65" r="1.1"/><circle cx="96" cy="68" r="1.1"/>
-          <circle cx="74" cy="72" r="1.1"/><circle cx="80" cy="74" r="1.1"/><circle cx="86" cy="76" r="1.1"/>
-          <circle cx="92" cy="78" r="1.1"/><circle cx="68" cy="78" r="1.1"/>
-          <circle cx="74" cy="84" r="1.1"/><circle cx="80" cy="86" r="1.1"/>
-          <circle cx="86" cy="88" r="1.1"/><circle cx="66" cy="86" r="1.1"/>
+      <svg class="map-svg" viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Latin America dot map -->
+        <g fill="#2a2416" opacity="0.85">
+          <!-- Mexico -->
+          <circle cx="60" cy="40" r="1.3"/><circle cx="70" cy="38" r="1.3"/><circle cx="80" cy="36" r="1.3"/>
+          <circle cx="90" cy="38" r="1.3"/><circle cx="95" cy="44" r="1.3"/><circle cx="88" cy="50" r="1.3"/>
+          <circle cx="78" cy="52" r="1.3"/><circle cx="68" cy="50" r="1.3"/><circle cx="75" cy="44" r="1.3"/>
+          <circle cx="85" cy="42" r="1.3"/>
+          <!-- Central America -->
+          <circle cx="92" cy="56" r="1.2"/><circle cx="96" cy="62" r="1.2"/><circle cx="98" cy="68" r="1.2"/>
+          <circle cx="100" cy="74" r="1.2"/>
+          <!-- Caribbean -->
+          <circle cx="110" cy="48" r="1.1"/><circle cx="118" cy="46" r="1.1"/><circle cx="126" cy="44" r="1.1"/>
+          <!-- Colombia highlighted area -->
+          <circle cx="104" cy="82" r="1.3"/><circle cx="112" cy="78" r="1.3"/><circle cx="120" cy="80" r="1.3"/>
+          <circle cx="116" cy="88" r="1.3"/><circle cx="108" cy="90" r="1.3"/>
+          <circle cx="112" cy="96" r="1.3"/><circle cx="120" cy="86" r="1.3"/>
+          <!-- Venezuela / Guyana -->
+          <circle cx="128" cy="82" r="1.2"/><circle cx="136" cy="80" r="1.2"/><circle cx="144" cy="82" r="1.2"/>
+          <circle cx="150" cy="86" r="1.2"/>
+          <!-- Brazil -->
+          <circle cx="140" cy="92" r="1.3"/><circle cx="150" cy="96" r="1.3"/><circle cx="158" cy="100" r="1.3"/>
+          <circle cx="148" cy="106" r="1.3"/><circle cx="156" cy="112" r="1.3"/><circle cx="162" cy="108" r="1.3"/>
+          <circle cx="144" cy="114" r="1.3"/><circle cx="152" cy="120" r="1.3"/><circle cx="160" cy="118" r="1.3"/>
+          <circle cx="140" cy="122" r="1.3"/><circle cx="148" cy="128" r="1.3"/><circle cx="156" cy="126" r="1.3"/>
+          <circle cx="136" cy="130" r="1.3"/><circle cx="144" cy="136" r="1.3"/>
+          <!-- Peru / Ecuador / Bolivia -->
+          <circle cx="104" cy="98" r="1.2"/><circle cx="108" cy="106" r="1.2"/><circle cx="106" cy="114" r="1.2"/>
+          <circle cx="110" cy="120" r="1.2"/><circle cx="114" cy="128" r="1.2"/>
+          <circle cx="120" cy="110" r="1.2"/><circle cx="122" cy="118" r="1.2"/><circle cx="124" cy="126" r="1.2"/>
+          <circle cx="128" cy="120" r="1.2"/><circle cx="130" cy="128" r="1.2"/>
+          <!-- Chile / Argentina -->
+          <circle cx="116" cy="136" r="1.2"/><circle cx="118" cy="144" r="1.2"/><circle cx="116" cy="152" r="1.2"/>
+          <circle cx="114" cy="160" r="1.2"/><circle cx="112" cy="168" r="1.2"/><circle cx="110" cy="176" r="1.2"/>
+          <circle cx="122" cy="136" r="1.2"/><circle cx="124" cy="144" r="1.2"/><circle cx="126" cy="152" r="1.2"/>
+          <circle cx="128" cy="160" r="1.2"/><circle cx="130" cy="148" r="1.2"/><circle cx="132" cy="140" r="1.2"/>
+          <circle cx="134" cy="132" r="1.2"/>
+          <!-- Paraguay / Uruguay -->
+          <circle cx="132" cy="148" r="1.2"/><circle cx="136" cy="154" r="1.2"/><circle cx="138" cy="148" r="1.2"/>
+          <circle cx="140" cy="154" r="1.2"/>
         </g>
-        <circle cx="83" cy="55" r="5" fill="#F5A623" opacity=".85"/>
-        <circle cx="83" cy="55" r="9" fill="none" stroke="#F5A623" stroke-width="1" opacity=".3"/>
-        <circle cx="83" cy="55" r="13" fill="none" stroke="#F5A623" stroke-width=".5" opacity=".15"/>
+        <!-- Colombia gold highlight -->
+        <circle cx="112" cy="86" r="6" fill="#E8A020" opacity=".9"/>
+        <circle cx="112" cy="86" r="10" fill="none" stroke="#E8A020" stroke-width="1" opacity=".4"/>
+        <circle cx="112" cy="86" r="14" fill="none" stroke="#E8A020" stroke-width=".5" opacity=".2"/>
+        <!-- Label -->
+        <text x="126" y="84" font-family="DM Sans, sans-serif" font-size="8" fill="#E8A020" opacity=".8" letter-spacing="1">COLOMBIA</text>
       </svg>
       <div class="flag-row">
         <span style="font-size:18px">🇨🇴</span>
@@ -757,64 +199,30 @@
     <div class="about-col reveal" style="transition-delay:.2s">
       <div class="about-col-title"><div class="diamond diamond-sm"></div>Let's Connect</div>
       <p class="about-text">Open to remote opportunities and excited to collaborate.</p>
-      <button class="linkedin-btn">
+      <a href="https://linkedin.com/in/andres-zea" target="_blank" class="linkedin-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         View My LinkedIn
-      </button>
+      </a>
       <div class="social-row">
-        <button class="social-btn">ig</button>
-        <button class="social-btn">yt</button>
-        <button class="social-btn">@</button>
+        <a href="#" class="social-btn" title="Instagram">ig</a>
+        <a href="#" class="social-btn" title="YouTube">yt</a>
+        <a href="contact.html" class="social-btn" title="Email">@</a>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
       <img src="assets/Asset_5.png" alt="az">
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#fff">andrés zea</div>
-        <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">video editor</div>
+        <div class="footer-name">andrés zea</div>
+        <div class="footer-role">video editor</div>
       </div>
     </div>
-    <p class="footer-copy">&copy; 2024 Andrés Zea. All rights reserved.</p>
-    <div class="footer-right">
-      Designed &amp; built with passion.
-      <div class="diamond diamond-sm"></div>
-    </div>
+    <p class="footer-copy">&copy; 2025 Andrés Zea. All rights reserved.</p>
+    <div class="footer-right">Designed &amp; built with passion. <div class="diamond diamond-sm"></div></div>
   </footer>
 
-  <script>
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-    // Mobile menu
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-    }
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
-
-    // Active nav link
-    const sections = document.querySelectorAll('section[id], #about');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-      navLinks.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-      });
-    });
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
